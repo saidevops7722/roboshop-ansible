@@ -7,10 +7,11 @@
 
 
 - name: Install Erlang and RabbitMQ
-  ansible.builtin.systemd:
-    - rabbitmq-server
-    - erlang
-  state: installed
+  ansible.builtin.yum:
+    name:
+      - rabbitmq-server
+      - erlang
+    state: installed
 
 
 - name: start RabbitMQ service
