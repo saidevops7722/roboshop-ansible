@@ -1,4 +1,4 @@
-- name: mongodb Schema
+- name: MongoDB Schema
   when: schema_type == "mongo"
   block:
     - name: Setup mongodb repo file
@@ -7,13 +7,13 @@
         dest: /etc/yum.repos.d/mongodb.repo
 
 
-    - name: Install mongodb client
+    - name: Install MongoDB client
       ansible.builtin.yum:
         name: mongodb-org-shell
         state: installed
 
     - name: Load schema
-      ansible.builtin.shell: "mongo --host mongodb-dev.devopsb71.site </app/schema/${{component}}.js"
+      ansible.builtin.shell: mongo --host mongodb-dev.devopsb71.site </app/schema/${{component}}.jS
 
 - name: MYSQL schema
   when: schema_type == "mysql"
@@ -24,7 +24,7 @@
         state: installed
 
     - name: Load schema
-      ansible.builtin.shell: "mysql -h mysql-dev.devopsb71.site -uroot -pRoboShop@1 < /app/schema/{{component}}.sql"
+      ansible.builtin.shell: mysql -h mysql-dev.devopsb71.site -uroot -pRoboShop@1 < /app/schema/{{component}}.sql
 
 
 
