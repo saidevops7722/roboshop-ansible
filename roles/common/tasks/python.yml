@@ -6,6 +6,10 @@
       - python3-devel
     state: installed
 
+- name: App Pre-requisites
+  ansible.builtin.import_tasks:
+    file: app-prereq.yml
+
 - name: Install Python dependencies
   ansible.builtin.pip:
     requirements: /app/requirements.txt
