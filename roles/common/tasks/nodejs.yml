@@ -20,7 +20,7 @@
   when: schema_type is defined
 
 - name: SystemD setup
-  ansible.builtin.import_task:
+  ansible.builtin.import_tasks:
     file: systemd-setup.yml
 
 
