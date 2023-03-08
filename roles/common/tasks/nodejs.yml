@@ -1,0 +1,26 @@
+- name: Configure NodeJS Repos
+  ansible.builtin.shell: https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Install NodeJS
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: App pre-requisites
+  ansible.builtin.import_tasks:
+   file: app-prereq.yml
+
+- name: Install NodeJS dependencies
+  community.general.npm:
+    path: /app
+
+- name: Schema setup
+  ansible.builtin.import_tasks:
+    file: schema-setup.yml
+  when: schema_type is defined
+
+- name: SystemD setup
+  ansible.builtin.import_task:
+    file: systemd-setup.yml
+
+
