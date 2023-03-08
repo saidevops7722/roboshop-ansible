@@ -13,7 +13,7 @@
         state: installed
 
     - name: Load schema
-      ansible.builtin.shell: mongo --host mongodb-dev.devopsb71.site </app/schema/${component}.js
+      ansible.builtin.shell: mongo --host mongodb-dev.devopsb71.site </app/schema/{{component}}.js
 
 - name: MYSQL schema
   when: schema_type == "mysql"
