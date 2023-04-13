@@ -1,3 +1,5 @@
 component: catalogue
 schema_type: mongo
 
+node_exporter: true
+
